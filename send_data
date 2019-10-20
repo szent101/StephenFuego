@@ -1,0 +1,61 @@
+<?php require_once('connection/connection.php'); ?>
+
+<?php 
+    
+    
+	
+	$add_query = '';
+	$query = "SELECT * from data";
+	$details = mysqli_query($connection, $query);
+	$admins_details = "";
+	while ($user = mysqli_fetch_assoc($details)) {
+		# code...
+		$admins_details .= "<tr>";
+		$admins_details .= "<td>{$user['sensor1']}</td>";
+		$admins_details .= "</tr>";
+		$admins_details .= "<tr>";
+		$admins_details .= "<td>{$user['sensor2']}</td>";
+		$admins_details .= "</tr>";
+		$admins_details .= "<tr>";
+		$admins_details .= "<td>{$user['sensor3']}</td>";
+		$admins_details .= "</tr>";
+ ?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin</title>
+	<meta http-equiv="refresh">
+	
+</head>
+<body>
+
+	
+	<h1> SMART BABY MONITORING SYSTEM </h1>
+<hr color="black">
+<br>
+
+<table border=15 cellpadding=30>
+	<tr>
+	<th> SENSORS</th>
+	<th> STATUS</th>
+	</tr>
+	<tr>
+	<td> PI R MOTION SENSOR </td>
+	
+	</tr>
+	<tr>
+	<td> CRY DETECTION SENSOR </td>
+	</tr>
+	<tr>
+	<td> DIAPER'S MOISTURE SENSOR </td>
+	</tr>
+
+		<?php echo $admins_details; ?>
+	</div>
+	<form action = "index.php" method="post"></form>
+
+</body>
+</html>
+<?php mysqli_close($connection); ?>
